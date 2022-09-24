@@ -18,7 +18,6 @@ class PostFetchLoaded extends PostFetchState {
   });
 
   @override
-  // TODO: implement props
   List<Object> get props => [postList];
 }
 
@@ -28,8 +27,6 @@ class PostFetchError extends PostFetchState {
   const PostFetchError({
     required this.failure,
   });
-
   @override
-  // TODO: implement props
   List<Object> get props => [failure];
 }

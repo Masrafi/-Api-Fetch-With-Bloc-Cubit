@@ -1,10 +1,10 @@
-import 'package:bloc_data_get/cubit/post_fetch_cubit.dart';
-import 'package:bloc_data_get/reposutory/api_repository.dart';
-import 'package:bloc_data_get/service/api_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'screens/home_screen.dart';
+import 'cubit/post_fetch_cubit.dart';
+import 'repository/api_reposiitory.dart';
+import 'screens/home_page.dart';
+import 'service/api_service.dart';
 
 void main() {
   runApp(MyApp(
@@ -15,16 +15,16 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key, required this.apiService}) : super(key: key);
 
-  // This widget is the root of your application.
   final ApiService apiService;
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<PostFetchCubit>(
           create: (context) => PostFetchCubit(
-            apiRepository: ApiReposityry(
-              apiServicec: apiService,
+            apiRepository: ApiRepository(
+              apiService: apiService,
             ),
           )..fetchPostApi(),
         ),
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }
